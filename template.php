@@ -91,31 +91,31 @@ if (is_null(theme_get_setting('user_notverified_display')) || theme_get_setting(
 
 
 // Get styles (add css stylesheets here to avoid IE 30 stylesheets limit)
-function get_zeropoint_style() {
+function get_zeropoint_cogent_style() {
   $style = theme_get_setting('style');
   return $style;
 }
-drupal_add_css(drupal_get_path('theme','zeropoint').'/css/style-zero.css');
-drupal_add_css(drupal_get_path('theme','zeropoint') . '/css/' . get_zeropoint_style() . '.css');
-drupal_add_css(drupal_get_path('theme','zeropoint').'/_custom/custom-style.css');
+drupal_add_css(drupal_get_path('theme','zeropoint_cogent').'/css/style-zero.css');
+drupal_add_css(drupal_get_path('theme','zeropoint_cogent') . '/css/' . get_zeropoint_cogent_style() . '.css');
+drupal_add_css(drupal_get_path('theme','zeropoint_cogent').'/_custom/custom-style.css');
 
 $roundcorners = theme_get_setting('roundcorners');
-  if ($roundcorners == '1'){ 
-  drupal_add_css(drupal_get_path('theme','zeropoint').'/css/round.css', 'theme');
+  if ($roundcorners == '1'){
+  drupal_add_css(drupal_get_path('theme','zeropoint_cogent').'/css/round.css', 'theme');
 }
 
 
 /**
  * Modify theme variables
  */
-function zeropoint_preprocess(&$vars) {
+function zeropoint_cogent_preprocess(&$vars) {
   global $user;                                           // Get the current user
   $vars['is_admin'] = in_array('ADMIN', $user->roles);    // Check for Admin, logged in
   $vars['logged_in'] = ($user->uid > 0) ? TRUE : FALSE;
 }
 
 
-function zeropoint_preprocess_page(&$vars) {
+function zeropoint_cogent_preprocess_page(&$vars) {
   global $language;
 // Remove the duplicate meta content-type tag, a bug in Drupal 6
   $vars['head'] = preg_replace('/<meta http-equiv=\"Content-Type\"[^>]*>/', '', $vars['head']);
@@ -177,44 +177,44 @@ function zeropoint_preprocess_page(&$vars) {
 
 // Build array of additional body classes and retrieve custom theme settings
 $layoutwidth = theme_get_setting('layout-width');
-  if ($layoutwidth == '0'){ 
+  if ($layoutwidth == '0'){
     $body_classes[] = 'layout-jello';
   }
-  if ($layoutwidth == '1'){ 
+  if ($layoutwidth == '1'){
     $body_classes[] = 'layout-fluid';
   }
-  if ($layoutwidth == '2'){ 
+  if ($layoutwidth == '2'){
     $body_classes[] = 'layout-fixed';
   }
 $sidebarslayout = theme_get_setting('sidebarslayout');
-  if ($sidebarslayout == '0'){ 
+  if ($sidebarslayout == '0'){
 	  $body_classes[] = (($vars['left']) ? 'l-m' : 'm') . (($vars['right']) ? '-r' : '') . '-var';
   }
-  if ($sidebarslayout == '1'){ 
+  if ($sidebarslayout == '1'){
 	  $body_classes[] = (($vars['left']) ? 'l-m' : 'm') . (($vars['right']) ? '-r' : '') . '-fix';
   }
-  if ($sidebarslayout == '2'){ 
+  if ($sidebarslayout == '2'){
 	  $body_classes[] = (($vars['left']) ? 'l-m' : 'm') . (($vars['right']) ? '-r' : '') . '-var1';
   }
-  if ($sidebarslayout == '3'){ 
+  if ($sidebarslayout == '3'){
 	  $body_classes[] = (($vars['left']) ? 'l-m' : 'm') . (($vars['right']) ? '-r' : '') . '-fix1';
   }
-  if ($sidebarslayout == '4'){ 
+  if ($sidebarslayout == '4'){
 	  $body_classes[] = (($vars['left']) ? 'l-m' : 'm') . (($vars['right']) ? '-r' : '') . '-eq';
   }
 $blockicons = theme_get_setting('blockicons');
-  if ($blockicons == '1'){ 
+  if ($blockicons == '1'){
     $body_classes[] = 'bicons32';
   }
-  if ($blockicons == '2'){ 
+  if ($blockicons == '2'){
     $body_classes[] = 'bicons48';
   }
 $pageicons = theme_get_setting('pageicons');
-  if ($pageicons == '1'){ 
+  if ($pageicons == '1'){
     $body_classes[] = 'picons';
   }
 $headerimg = theme_get_setting('headerimg');
-  if ($headerimg == '1'){ 
+  if ($headerimg == '1'){
     $body_classes[] = 'himg';
   }
 
@@ -240,12 +240,12 @@ $siteid = theme_get_setting('siteid');
 // TNT THEME SETTINGS SECTION
 // Display mission statement on all pages
   if (theme_get_setting('mission_statement_pages') == 'all') {
-    $vars['mission'] = theme_get_setting('mission', false);  
+    $vars['mission'] = theme_get_setting('mission', false);
   }
 
 // Hide breadcrumb on all pages
   if (theme_get_setting('breadcrumb_display') == 0) {
-    $vars['breadcrumb'] = '';  
+    $vars['breadcrumb'] = '';
   }
 
 // Set site title, slogan, mission, page title & separator (unless using Page Title module)
@@ -302,11 +302,11 @@ $siteid = theme_get_setting('siteid');
     if (theme_get_setting('meta_keywords') !== '') {
       $keywords = '<meta name="keywords" content="'. theme_get_setting('meta_keywords') .'" />';
       $vars['head'] .= $keywords ."\n";
-    } 
+    }
     if (theme_get_setting('meta_description') !== '') {
       $keywords = '<meta name="description" content="'. theme_get_setting('meta_description') .'" />';
       $vars['head'] .= $keywords ."\n";
-    } 
+    }
   }
 
 // Set IE6 & IE7 stylesheets
@@ -317,7 +317,7 @@ $siteid = theme_get_setting('siteid');
 // Use grouped import technique for more than 30 un-aggregated stylesheets (css limit fix for IE)
   $css = drupal_add_css();
   if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
-    if (theme_get_setting('fix_css_limit') && !variable_get('preprocess_css', FALSE) && zeropoint_css_count($css) > 26) {
+    if (theme_get_setting('fix_css_limit') && !variable_get('preprocess_css', FALSE) && zeropoint_cogent_css_count($css) > 26) {
       $styles = '';
       $suffix = "\n".'</style>'."\n";
       foreach ($css as $media => $types) {
@@ -344,13 +344,13 @@ $siteid = theme_get_setting('siteid');
 }
 
 
-function zeropoint_preprocess_block(&$vars) {
+function zeropoint_cogent_preprocess_block(&$vars) {
 // Add regions with themed blocks (e.g., left, right) to $themed_regions array and retrieve custom theme settings
 $themedblocks = theme_get_setting('themedblocks');
-  if ($themedblocks == '0'){ 
+  if ($themedblocks == '0'){
   $themed_regions = array('left','right');
 }
-  if ($themedblocks == '1'){ 
+  if ($themedblocks == '1'){
   $themed_regions = array('left','right','user1','user2','user3','user4','user5','user6','user7','user8');
 }
   if (is_array($themed_regions))
@@ -359,7 +359,7 @@ $themedblocks = theme_get_setting('themedblocks');
 }
 
 
-function zeropoint_preprocess_node(&$vars) {
+function zeropoint_cogent_preprocess_node(&$vars) {
 // Build array of handy node classes
   $node_classes = array();
   $node_classes[] = $vars['zebra'];                                              // Node is odd or even
@@ -461,7 +461,7 @@ if (module_exists('uc_product') && uc_product_is_product($vars) && $vars['templa
 }
 
 
-function zeropoint_preprocess_comment(&$vars) {
+function zeropoint_cogent_preprocess_comment(&$vars) {
   global $user;
   // Build array of handy comment classes
   $comment_classes = array();
@@ -488,7 +488,7 @@ function zeropoint_preprocess_comment(&$vars) {
  * Set defaults for comments display
  * (Requires comment-wrapper.tpl.php file in theme directory)
  */
-function zeropoint_preprocess_comment_wrapper(&$vars) {
+function zeropoint_cogent_preprocess_comment_wrapper(&$vars) {
   $vars['display_mode']  = COMMENT_MODE_FLAT_EXPANDED;
   $vars['display_order'] = COMMENT_ORDER_OLDEST_FIRST;
   $vars['comment_controls_state'] = COMMENT_CONTROLS_HIDDEN;
@@ -496,11 +496,11 @@ function zeropoint_preprocess_comment_wrapper(&$vars) {
 
 
 /**
- * Adds a class for the style of view  
+ * Adds a class for the style of view
  * (e.g., node, teaser, list, table, etc.)
  * (Requires views-view.tpl.php file in theme directory)
  */
-function zeropoint_preprocess_views_view(&$vars) {
+function zeropoint_cogent_preprocess_views_view(&$vars) {
   $vars['css_name'] = $vars['css_name'] .' view-style-'. views_css_safe(strtolower($vars['view']->type));
 }
 
@@ -508,11 +508,11 @@ function zeropoint_preprocess_views_view(&$vars) {
 /**
  * Modify search results based on theme settings
  */
-function zeropoint_preprocess_search_result(&$variables) {
+function zeropoint_cogent_preprocess_search_result(&$variables) {
   static $search_zebra = 'even';
   $search_zebra = ($search_zebra == 'even') ? 'odd' : 'even';
   $variables['search_zebra'] = $search_zebra;
-  
+
   $result = $variables['result'];
   $variables['url'] = check_url($result['link']);
   $variables['title'] = check_plain($result['title']);
@@ -522,7 +522,7 @@ function zeropoint_preprocess_search_result(&$variables) {
   if (isset($result['snippet']) && theme_get_setting('search_snippet')) {
     $variables['snippet'] = $result['snippet'];
   }
-  
+
   $info = array();
   if (!empty($result['type']) && theme_get_setting('search_info_type')) {
     $info['type'] = check_plain($result['type']);
@@ -555,7 +555,7 @@ function zeropoint_preprocess_search_result(&$variables) {
 /**
  * Hide or show username '(not verified)' text
  */
-function zeropoint_username($object) {
+function zeropoint_cogent_username($object) {
   if ((!$object->uid) && $object->name) {
     $output = (!empty($object->homepage)) ? l($object->name, $object->homepage, array('attributes' => array('rel' => 'nofollow'))) : check_plain($object->name);
     $output .= (theme_get_setting('user_notverified_display') == 1) ? ' ('. t('not verified') .')' : '';
@@ -570,9 +570,9 @@ function zeropoint_username($object) {
 /**
  * User links
  */
-function zeropoint_login(){
+function zeropoint_cogent_login(){
 $loginlinks = theme_get_setting('loginlinks');
-  if ($loginlinks == '1'){ 
+  if ($loginlinks == '1'){
     global $user;
     $login = url(drupal_get_path_alias('user'));
     $register = url(drupal_get_path_alias('user/register'));
@@ -593,9 +593,9 @@ $loginlinks = theme_get_setting('loginlinks');
 
 
 /**
- * Set default form file input size 
+ * Set default form file input size
  */
-function zeropoint_file($element) {
+function zeropoint_cogent_file($element) {
   $element['#size'] = ($element['#size'] > 40) ? 40 : $element['#size'];
   return theme_file($element);
 }
@@ -604,10 +604,10 @@ function zeropoint_file($element) {
 /**
  * Count the total number of CSS files in $vars['css']
  */
-function zeropoint_css_count($array) {
+function zeropoint_cogent_css_count($array) {
   $count = 0;
   foreach ($array as $item) {
-    $count = (is_array($item)) ? $count + zeropoint_css_count($item) : $count + 1;
+    $count = (is_array($item)) ? $count + zeropoint_cogent_css_count($item) : $count + 1;
   }
   return $count;
 }
@@ -647,7 +647,7 @@ function zeropoint_css_count($array) {
  * @return
  *   an HTML string containing a link to the given path.
  */
-function zeropoint_themesettings_link($prefix, $suffix, $text, $path, $options) {
+function zeropoint_cogent_themesettings_link($prefix, $suffix, $text, $path, $options) {
   return $prefix . (($text) ? l($text, $path, $options) : '') . $suffix;
 }
 
@@ -655,7 +655,7 @@ function zeropoint_themesettings_link($prefix, $suffix, $text, $path, $options) 
 /**
  * Breadcrumb override
  */
-function zeropoint_breadcrumb($breadcrumb) {
+function zeropoint_cogent_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {
     $breadcrumb[] = drupal_get_title();  // full breadcrumb ( › = â€º , » = &#187; &raquo;)
     return '<div class="breadcrumb">'. implode(' &raquo; ', $breadcrumb) .'</div>';
@@ -692,7 +692,7 @@ function id_safe($string) {
 // retrieve additional custom theme settings
 $preload = theme_get_setting('cssPreload'); // print the js file if css image preload enabled
   if ($preload == '1'){
-    drupal_add_js(drupal_get_path('theme','zeropoint').'/js/preloadCssImages.jQuery_v5.js'); // load the javascript
+    drupal_add_js(drupal_get_path('theme','zeropoint_cogent').'/js/preloadCssImages.jQuery_v5.js'); // load the javascript
     drupal_add_js('jQuery(document).ready(function(){
     jQuery.preloadCssImages();
   });
@@ -700,20 +700,20 @@ $preload = theme_get_setting('cssPreload'); // print the js file if css image pr
 }
 
 $dropdownjs = theme_get_setting('menutype'); // if we choose dropdown
-if($dropdownjs == '1'){ 
-  drupal_add_js(drupal_get_path('theme','zeropoint').'/js/jquery.hoverIntent.minified.js'); // load the javascript
-	drupal_add_js(drupal_get_path('theme','zeropoint').'/js/dropdown.js'); // load the javascript	
+if($dropdownjs == '1'){
+  drupal_add_js(drupal_get_path('theme','zeropoint_cogent').'/js/jquery.hoverIntent.minified.js'); // load the javascript
+	drupal_add_js(drupal_get_path('theme','zeropoint_cogent').'/js/dropdown.js'); // load the javascript
 }
 
 function menupos() {
-  $navpos = theme_get_setting('navpos'); // Primary links position 
-    if ($navpos == '0'){ 
+  $navpos = theme_get_setting('navpos'); // Primary links position
+    if ($navpos == '0'){
       return 'navleft';
   }
-    if ($navpos == '1'){ 
+    if ($navpos == '1'){
       return 'navcenter';
   }
-    if ($navpos == '2'){ 
+    if ($navpos == '2'){
       return 'navright';
   }
 }
@@ -721,7 +721,7 @@ function menupos() {
 
 // Quick fix for the validation error: 'ID "edit-submit" already defined'
 $elementCountForHack = 0;
-function zeropoint_submit($element) {
+function zeropoint_cogent_submit($element) {
 	global $elementCountForHack;
 	return str_replace('edit-submit', 'edit-submit-' . ++$elementCountForHack, theme('button', $element));
 }

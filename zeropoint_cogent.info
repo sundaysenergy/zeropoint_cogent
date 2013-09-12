@@ -37,9 +37,5 @@ features[] = search
 features[] = favicon
 features[] = primary_links
 features[] = secondary_links
-; Information added by drupal.org packaging script on January 1, 1970 - 00:00
-version = "6.x-1.12"
-core = "6.x"
-project = "zeropoint"
-datestamp = "1295534820"
+
 

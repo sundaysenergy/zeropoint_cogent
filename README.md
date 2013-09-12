@@ -1,10 +1,8 @@
-README.TXT // 0 Point theme for Drupal 6.
-
-Thank you for downloading this theme!
-
+# 0 Point theme for Drupal 6. Customized for cogent-tech.
 
 ABOUT THE 0 POINT THEME:
--------------------------------------------------------------------------+
+--------------------------
+
 0 Point is an advanced theme. It contains the same kinds of features 
 you'll find in our other Drupal themes, plus many more.
 
@@ -36,7 +34,9 @@ Layout features
 
 Advanced theme settings features
 ===============================
+
 Layout settings
+
 - Style - Choose a colour palette from 7 options: 0 Point (Grey default), 
 	Sky, Nature, Ivy, Ink, Sangue, Lime and Themer. More colour options to come.
 - Layout width - adaptive, fluid and fixed width.
@@ -52,31 +52,36 @@ Layout settings
 - 0 Point login/register links.
 
 General settings
+
 - Mission statement - Display mission statement only on front page or on all pages; 
 - Display Breadcrumb; 
 - Username - Display "not verified" for unregistered usernames; 
 - Search results - Customize what should be displayed on the search results page. 
 
 Node settings
+
 - Author & date - display author's username and/or date posted; 
 - Taxonomy terms - How to display (or not) vocabularies and category terms. 
 
 Search engine optimization (SEO) settings
+
 - Page titles - Format the title that displays in the browser's title bar; 
 - Meta tags. 
 
 Theme development settings
+
 - Site ID bodyclass - usefull in a multisite environment.
-- Fix IE stylesheet limit - useful when you cannot use aggregation (e.g., when 
-  developing or using private file downloads), especially for RTL sites.
+- Fix IE stylesheet limit - useful when you cannot use aggregation (e.g., when developing or using private file downloads), especially for RTL sites.
 - Rebuild theme registry on every page.
 
 
 
 MODULE SUPPORT
--------------------------------------------------------------------------+
+---------------------------
+
 This theme can support virtualy any module.
 It has been heavily tested with:
+
   - AdSense;
   - Advanced Forum;
   - Blockquotes;
@@ -98,7 +103,7 @@ It has been heavily tested with:
   - Print;
   - Simplenews;
   - Thickbox;
-  - ÜBERCART;
+  - ?ERCART;
   - Views;
   - Wysiwyg (TinyMCE and FCKeditor);
   - Weather;
@@ -106,7 +111,8 @@ It has been heavily tested with:
 
   
 THEME MODIFICATION
--------------------------------------------------------------------------+
+--------------------------------------------------------------
+
 0 Point theme alow many sub-themes as plugins. More sub-themes will 
 be available at http://www.radut.net/drupal/
 
@@ -116,21 +122,15 @@ with /_custom/custom-style.css; please read the comments in this file.
 
 
 SIDEBARS DIMMENSIONS
--------------------------------------------------------------------------+
+-------------------------------------------------------
 The maximum with available for sidebars is as follow:
 
-                                         | left | right | both
------------------------------------------------------------------
-Variable asyimmetrical sidebars (wide)   | 250  |  300  | 160-234
------------------------------------------------------------------
-Fixed asyimmetrical sidebars (wide)      | 160  |  234  | 160-234
------------------------------------------------------------------
-Variable asyimmetrical sidebars (narrow) | 230  |  280  | 140-214
------------------------------------------------------------------
-Fixed asyimmetrical sidebars (narrow)    | 140  |  214  | 140-214
------------------------------------------------------------------
-Equal width sidebars (narrow)            | 155  |  155  | 155-155
------------------------------------------------------------------
+                                             | left | right | both
+    Variable asyimmetrical sidebars (wide)   | 250  |  300  | 160-234
+    Fixed asyimmetrical sidebars (wide)      | 160  |  234  | 160-234
+    Variable asyimmetrical sidebars (narrow) | 230  |  280  | 140-214
+    Fixed asyimmetrical sidebars (narrow)    | 140  |  214  | 140-214
+    Equal width sidebars (narrow)            | 155  |  155  | 155-155
 
 NOTE: Do not exceed the available width (especially with images) or IE will 
 not behave so the sidebars may drop. 
@@ -138,7 +138,8 @@ not behave so the sidebars may drop.
 
 
 USING THE SuckerFish DROP-DOWN MENU
--------------------------------------------------------------------------+
+------------------------------------------------------------------
+
 The menu can either be a two-level static menu or a suckerfish drop-down menu.
 
 Out of the box the theme will show the primary and secondary menu. If you select 
@@ -151,13 +152,11 @@ NOTE: Go to /admin/build/menu and expand all parents in your primary menu.
 
 
 INSTALLATION INSTRUCTIONS
--------------------------------------------------------------------------+
+----------------------------------------------------------
 
-1) Place the zeropoint directory into your themes directory (sites/all/themes/zeropoint).
-
-2) Enable the 0 Point theme (/admin/build/themes).
-
-3) You can configure settings for the 0 Point theme at /admin/build/themes/settings/zeropoint. 
+1. Place the zeropoint directory into your themes directory (sites/all/themes/zeropoint).
+2. Enable the 0 Point theme (/admin/build/themes).
+3. You can configure settings for the 0 Point theme at /admin/build/themes/settings/zeropoint. 
 
 If you place the theme in a location other than /sites/all/themes/zeropoint you should 
 modify the path in /zeropoint/css/iepngfix.htc and /zeropoint/css/ie.6, accordingly.
@@ -165,39 +164,20 @@ modify the path in /zeropoint/css/iepngfix.htc and /zeropoint/css/ie.6, accordin
 
 
 UPGRADING to a new version of 0 Point
--------------------------------------------------------------------------+
+----------------------------------------------------------------
 
-1) If possible, log on as the user with user ID 1. 
-
-2) Put the site in "Off-line" mode.
-
-3) Go to admin/build/themes/settings/zeropoint and change the theme development
+1. If possible, log on as the user with user ID 1. 
+2. Put the site in "Off-line" mode.
+3. Go to admin/build/themes/settings/zeropoint and change the theme development
    settings to "rebuild theme registry on every page". 
-
-4) Place the zeropoint directory into your themes directory (sites/all/themes/zeropoint).
+4. Place the zeropoint directory into your themes directory (sites/all/themes/zeropoint).
    In case you have done customization to 0 Point theme, remember to overwrite theme
    custom-style.css with your custom-style.css file.
-
-5) Configure the new settings for the 0 Point theme at /admin/build/themes/settings/zeropoint. 
-
-6) Clear the Drupal cache and deactivate the "rebuild theme registry on every page"
+5. Configure the new settings for the 0 Point theme at /admin/build/themes/settings/zeropoint. 
+6. Clear the Drupal cache and deactivate the "rebuild theme registry on every page"
    option and put the site in "On-line" mode. It is always a good idea to refresh 
    the browser's cache (CTRL+F5).
 
 NOTE: In rare cases, if after upgrading the theme can not be configured you should delete 
 all the zeropoint records in the data base.
 
-
-
-CONTACT
--------------------------------------------------------------------------+
-My drupal nick is florian <http://drupal.org/user/35316> – and I can be reached 
-at florian@radut.net (http://www.radut.net).
-
-I can also be contacted for paid customizations of 0 Point theme as well as
-Drupal consulting, installation and customizations.
-
-The theme is installed at: 
-http://www.eucopyright.com/
-http://www.301.ro/
-http://www.mlnar.ro/
