@@ -40,7 +40,7 @@
     <?php if (function_exists('toplinks')): ?>
       <div id="toplinks"><?php print toplinks() ?></div>
     <?php endif; ?>
-      <div id="user_links"><?php print zeropoint_login() ?></div>
+      <div id="user_links"><?php print zeropoint_cogent_login() ?></div>
     <?php if ($banner): ?>
       <div id="banner"><?php print $banner; ?></div>
     <?php endif; ?>
@@ -55,8 +55,8 @@
   <div id="name-and-slogan">
 <?php if ($site_name) : ?>
   <?php if ($is_front): ?>
-    <h1 id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></h1>   
-  <?php endif; ?> 
+    <h1 id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></h1>
+  <?php endif; ?>
   <?php if (!$is_front): ?>
     <p id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></p>
   <?php endif; ?>

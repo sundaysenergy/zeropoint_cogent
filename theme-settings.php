@@ -3,7 +3,7 @@
 /**
  * Theme setting defaults
  */
-function zeropoint_default_theme_settings() {
+function zeropoint_cogent_default_theme_settings() {
   $defaults = array(
     'style' => 'grey',
     'layout-width'    => 0,
@@ -48,7 +48,7 @@ function zeropoint_default_theme_settings() {
   $defaults = array_merge($defaults, theme_get_settings());
 
   // Set initial content-type-specific settings to defaults
-  
+
   $node_types = node_get_types('names');
   foreach ($node_types as $type => $name) {
     $defaults["taxonomy_display_{$type}"]    = $defaults['taxonomy_display_default'];
@@ -65,7 +65,7 @@ function zeropoint_default_theme_settings() {
  * Theme setting initialization
  * if updated, unsaved, or registry rebuild mode
  */
-function zeropoint_initialize_theme_settings($theme_name) {
+function zeropoint_cogent_initialize_theme_settings($theme_name) {
   $theme_settings = theme_get_settings($theme_name);
   if (is_null($theme_settings['fix_css_limit']) || $theme_settings['rebuild_registry'] == 1) {
     // Rebuild theme registry & notify user
@@ -73,24 +73,24 @@ function zeropoint_initialize_theme_settings($theme_name) {
       drupal_rebuild_theme_registry();
       drupal_set_message(t('Theme registry rebuild completed. <a href="!link">Turn off</a> this feature for production websites.', array('!link' => url('admin/build/themes/settings/' . $GLOBALS['theme']))), 'warning');
     }
-  
+
     // Retrieve saved or site-wide theme settings
     $theme_setting_name = str_replace('/', '_', 'theme_'. $theme_name .'_settings');
     $settings = (variable_get($theme_setting_name, FALSE)) ? theme_get_settings($theme_name) : theme_get_settings();
-  
+
     // Skip toggle_node_info_ settings
     if (module_exists('node')) {
       foreach (node_get_types() as $type => $name) {
         unset($settings['toggle_node_info_'. $type]);
       }
     }
-  
+
     // Retrieve default theme settings
-    $defaults = zeropoint_default_theme_settings();
-  
+    $defaults = zeropoint_cogent_default_theme_settings();
+
     // Set combined default & saved theme settings
     variable_set($theme_setting_name, array_merge($defaults, $settings));
-  
+
     // Force theme settings refresh
     theme_get_setting('', TRUE);
   }
@@ -105,11 +105,11 @@ function zeropoint_initialize_theme_settings($theme_name) {
 * @return
 *   array A form array.
 */
-function zeropoint_settings($saved_settings) {
+function zeropoint_cogent_settings($saved_settings) {
   global $base_url;
 
   // Retrieve & combine default and saved theme settings
-  $defaults = zeropoint_default_theme_settings();
+  $defaults = zeropoint_cogent_default_theme_settings();
   $settings = array_merge($defaults, $saved_settings);
 
 
@@ -354,7 +354,7 @@ function zeropoint_settings($saved_settings) {
     '#collapsed' => FALSE,
     '#attributes' => array('class' => 'node_settings'),
   );
-  
+
   // Author & Date Settings
   $form['tnt_container']['node_type_specific']['submitted_by_container'] = array(
     '#type' => 'fieldset',
@@ -450,7 +450,7 @@ function zeropoint_settings($saved_settings) {
         $form['tnt_container']['node_type_specific']['display_taxonomy_container']['display_taxonomy'][$type]["taxonomy_vocab_hide_{$type}_{$key}"] = array(
           '#type' => 'checkbox',
           '#title' => t('Hide vocabulary: '. $vocab_name),
-          '#default_value' => $settings["taxonomy_vocab_hide_{$type}_{$key}"], 
+          '#default_value' => $settings["taxonomy_vocab_hide_{$type}_{$key}"],
         );
       }
       // Options for default settings
@@ -611,6 +611,6 @@ function zeropoint_settings($saved_settings) {
 
   // Return theme settings form
   return $form;
-}  
+}
 
 ?>
